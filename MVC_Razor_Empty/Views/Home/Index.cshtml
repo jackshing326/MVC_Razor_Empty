@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+     <div class="wrapper-page">
+
+            <div class="text-center">
+                <a class="logo-lg"><i class="mdi mdi-radar"></i> <span>XXXXX系統登入頁面</span> </a>
+            </div>
+
+            <form class="form-horizontal m-t-20" action="index.html">
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="mdi mdi-account"></i></span>
+                            <input class="form-control" type="text" id="User" value="test">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="mdi mdi-radar"></i></span>
+                            <input class="form-control" type="password" id="PWD" value="test">
+                        </div>
+                    </div>
+                </div>
+
+         
+
+                <div class="form-group text-right m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary btn-custom w-md waves-effect waves-light" type="submit" id="IndexLogin">登入
+                        </button>
+                    </div>
+                </div>
+
+          
+            </form>
+        </div>
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+<script>
+    var resizefunc = [];
+</script>
+
+
+
+@section Head {
+
+    <script type="text/javascript">
+        $(function () {
+            $("#IndexLogin").click(function () {
+
+                var Account = $("#User").val();
+                var PWD = $("#PWD").val();
+                //alert(Account);
+                //alert(PWD);
+                $.post("Home/LoginAJAX", { UserName: Account, Password: PWD },
+                //data: "{ UserName:'" + Account + "',Password: '" + PWD + "'}",
+                    function (response) {
+                        // alert(response['Url']);
+                        // alert(response['IsLoginSuccess']);                   
+                        var IsLoginSuccess = response['IsLoginSuccess'];
+                        var Url = response['Url'];
+                        if (IsLoginSuccess == true) {
+                            // 轉至另外一頁面
+                            // var url = '@Url.Action("Index", "RanKDistribution")';
+                            // window.location.href = url;
+                            window.location.href = Url;
+                        }
+                        else {
+                            alert("密碼錯誤");
+                        }
+                    }
+                     ).done(function () {
+                         // alert("donn");
+                     }
+                     ).fail(function () {
+                         //alert("fail");
+                     }
+                     )
+
+
+                return false;
+
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        function IndexLoginfuncion() {
+            ///////////////////
+            $(function () {
+                var Account = $("#User").val();
+                var PWD = $("#PWD").val();
+                alert(Account);
+                alert(PWD);
+                $.post("Home/LoginAJAX", { UserName: Account, Password: PWD },
+           //data: "{ UserName:'" + Account + "',Password: '" + PWD + "'}",
+               function (response) {
+                   // alert(response['Url']);
+                   // alert(response['IsLoginSuccess']);                   
+                   var IsLoginSuccess = response['IsLoginSuccess'];
+                   var Url = response['Url'];
+                   if (IsLoginSuccess == true) {
+                       // 轉至另外一頁面
+                       // var url = '@Url.Action("Index", "RanKDistribution")';
+                       // window.location.href = url;
+                       window.location.href = Url;
+                   }
+                   else {
+                       alert("密碼錯誤");
+                   }
+               }
+                     ).done(function () {
+                         alert("donn");
+                     }
+                         ).fail(function () {
+                             alert("fail");
+                         }
+                         )
+
+
+                return false;
+            });
+            //////////////////////
+       }
+
+
+
+
+    </script>
+
+
+
+
+
+
+}
+
+@section Boostrap {
+
+    
+    <link rel="shortcut icon" href="~/Content/bootstrap/blue-horizontal/assets/images/favicon_1.ico">
+    <link href="~/Content/bootstrap/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/modernizr.min.js"></script>
+
+
+    @*
+       <!-- jQuery  -->
+    <script src="Content/bootstrap/assets/js/jquery.min.js"></script>
+    <script src="Content/bootstrap/assets/js/popper.min.js"></script>
+    <!-- Popper for Bootstrap -->
+    <!-- Tether for Bootstrap -->
+    <script src="Content/bootstrap/assets/js/bootstrap.min.js"></script>
+    <script src="Content/bootstrap/assets/js/waves.js"></script>
+    <script src="Content/bootstrap/assets/js/jquery.slimscroll.js"></script>
+    <script src="Content/bootstrap/assets/js/jquery.scrollTo.min.js"></script>
+
+    <!-- Modal-Effect -->
+    <script src="Content/bootstrap/plugins/custombox/dist/custombox.min.js"></script>
+    <script src="Content/bootstrap/plugins/custombox/dist/legacy.min.js"></script>
+
+    <!-- App js -->
+    <script src="Content/bootstrap/assets/js/jquery.core.js"></script>
+    <script src="Content/bootstrap/assets/js/jquery.app.js"></script>
+
+
+            <!-- App css -->
+    <link href="Content/bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />  
+    <link href="Content/bootstrap/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="Content/bootstrap/assets/js/modernizr.min.js"></script>
+
+    <link rel="shortcut icon" href="Content/bootstrap/assets/images/favicon.ico">
+    <link href="Content/bootstrap/plugins/custombox/dist/custombox.min.css" rel="stylesheet">
+    
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/popper.min.js"></script>
+    <!-- Popper for Bootstrap -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/detect.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/fastclick.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.blockUI.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/waves.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/wow.min.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Content/bootstrap/plugins/switchery/switchery.min.js"></script>
+
+    <!-- Custom main Js -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.core.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.app.js"></script>
+    *@
+  
+
+}
+

@@ -1,0 +1,598 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+
+<!-- ========== Left Sidebar Start ========== -->
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container-fluid">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <!-- Text Logo -->
+                <a class="logo">
+                    <span class="logo-small"><i class="mdi mdi-radar"></i></span>
+                    <span class="logo-large"><i class="mdi mdi-radar"></i>XXXXXX監控系統</span>
+                </a>
+                <!-- Image Logo -->
+                <!--<a href="index.html" class="logo">-->
+                <!--<img src="assets/images/logo_dark.png" alt="" height="24" class="logo-lg">-->
+                <!--<img src="assets/images/logo_sm.png" alt="" height="24" class="logo-sm">-->
+                <!--</a>-->
+
+            </div>
+            <!-- End Logo container-->
+
+
+            <div class="menu-extras topbar-custom">
+                @*
+                        <ul class="list-inline float-right mb-0">
+
+                            <li class="menu-item list-inline-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
+                                   aria-haspopup="false" aria-expanded="false">
+                                    <i class="mdi mdi-bell noti-icon"></i>
+                                    <span class="badge badge-pink noti-icon-badge">4</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg" aria-labelledby="Preview">
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="font-16"><span class="badge badge-danger float-right">5</span>Notification</h5>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-success"><i class="mdi mdi-comment-account"></i></div>
+                                        <p class="notify-details">Robert S. Taylor commented on Admin<small class="text-muted">1 min ago</small></p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-info"><i class="mdi mdi-account"></i></div>
+                                        <p class="notify-details">New user registered.<small class="text-muted">1 min ago</small></p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-danger"><i class="mdi mdi-airplane"></i></div>
+                                        <p class="notify-details">Carlos Crouch liked <b>Admin</b><small class="text-muted">1 min ago</small></p>
+                                    </a>
+
+                                    <!-- All-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item notify-all">
+                                        View All
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+                                   aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="text-overflow"><small class="text-white">Welcome ! John</small> </h5>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-account-star-variant"></i> <span>Profile</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-settings"></i> <span>Settings</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-lock-open"></i> <span>Lock Screen</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-logout"></i> <span>Logout</span>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                  *@
+            </div>
+            <!-- end menu-extras -->
+
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+
+    <div class="navbar-custom">
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <div class="row col-12">
+                    <h1></h1>
+                </div>
+                <div class="row col-12">
+                    <label class="col-1 col-form-label">報表選擇</label>
+                    <div class="form-group row col-2">
+                        <select class="form-control" id="Select_Report">
+                            <option></option>
+                            @foreach (var item in (IEnumerable<System.Data.DataRow>)ViewData["RankDistributionSetting"])
+                            {  
+                                <option>@item["ReportKind"].ToString().Trim()</option>
+                            }
+
+                        </select>
+                    </div>
+
+                    <label class="col-1 col-form-label">縣市or 主管機關選擇</label>
+                    <div class="form-group row col-2">
+                        <select class="form-control" id="Select_City">
+                        </select>
+                    </div>
+
+                    <label class="col-1 col-form-label">學校選擇</label>
+                    <div class="form-group row col-2">
+                        <select class="form-control" id="Select_School">
+                        </select>
+                    </div>
+
+                    <label class="col-1 col-form-label">科目</label>
+                    <div class="form-group row col-2">
+                        <select class="form-control" id="Select_Subject">
+                        </select>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+                    <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" id="Query">查詢</button>
+
+                    <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" id="QueryJson">查詢Json</button>
+
+                     <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" id="DownLoadData">下載資料</button>
+                </div>
+               
+                <!-- End navigation menu -->
+            </div>
+            <!-- end #navigation -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end navbar-custom -->
+
+</header>
+<!-- End Navigation Bar-->
+
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="wrapper">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <br />
+                    </div>
+                    <div class="card-box" style="overflow: auto;">
+                        <h4 class="m-t-0 header-title" position: absolute>資料顯示</h4>
+                        <table class="table table-bordered " id="datatable_show">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Column heading</th>
+                                    <th>Column heading</th>
+                                    <th>Column heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-active">
+                                    <th scope="row">1</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <th scope="row">3</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-info">
+                                    <th scope="row">5</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <th scope="row">7</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <th scope="row">9</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end content -->
+
+    <footer class="footer">
+        @DateTime.Now.ToString("yyyy") © 學力監控系統 
+    </footer>
+
+</div>
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+
+
+
+<script>
+    var resizefunc = [];
+</script>
+
+@section Head {
+
+
+
+    <link rel="shortcut icon" href="~/Content/bootstrap/blue-horizontal/assets/images/favicon_1.ico">
+    <link href="~/Content/bootstrap/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap/blue-horizontal/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/modernizr.min.js"></script>
+
+}
+
+
+
+
+@section Boostrap {
+
+
+
+    <!--111111111111111111111111111111111111111111111111111111111111111111111111-->
+    <!-- Plugins  -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/popper.min.js"></script>
+    <!-- Popper for Bootstrap -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/bootstrap.min.js"></script>
+    <!--<script src="~/Content/bootstrap/blue-horizontal/assets/js/detect.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/fastclick.js"></script>-->
+   
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.slimscroll.js"></script>
+    <!-- <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.blockUI.js"></script> -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/waves.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/wow.min.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Content/bootstrap/plugins/switchery/switchery.min.js"></script>
+
+    <!-- Custom main Js -->
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.core.js"></script>
+    <script src="~/Content/bootstrap/blue-horizontal/assets/js/jquery.app.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            /*測試JQuery特效*/
+            $('#QueryJson').hide();
+            $('#QueryJson').fadeIn('slow');
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('body').addClass("fixed-left");
+            $('#Select_City').attr('disabled', 'disabled');
+            $('#Select_School').attr('disabled', 'disabled');
+            $('#Select_Subject').attr('disabled', 'disabled');
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        /*AJAX*/
+        $(function () {
+            $("#Query").click(function () {
+                var _Report = $('#Select_Report').val().trim();
+                var _SchoolCode = $('#Select_School').val().trim();
+                $.post("RanKDistribution/DataShowAJAX", { SchoolLevel: _Report, SchoolCode: _SchoolCode },
+                    function (response) {
+                        //alert(response);
+                        $('#datatable_show').html('');
+                        $('#datatable_show').html(response);
+                    }
+                   ).done(function () {
+                       // alert("donn");
+                   }
+                   ).fail(function () {
+                       //alert("fail");
+                   }
+                   )
+                return false;
+
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        /*AJAX Json table*/
+        $(function () {
+            $("#QueryJson").click(function () {
+                var _Report = $('#Select_Report').val().trim();
+                var _SchoolCode = $('#Select_School').val().trim();
+                $.getJSON({
+                    type: "POST",
+                    url: "RanKDistribution/DataShowAJAXJson",
+                    data: "{ SchoolLevel:'" + _Report + "',SchoolCode:'" + _SchoolCode + "'}",
+                    method: "post",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        /*先做table columns */
+                        var table = "";
+                        var tblHeader = "<thead> <tr>";
+                        var tblBody = "";
+                        var TableRow = "";
+
+                        for (var k in response[0]) tblHeader += "<th>" + k + "</th>";
+                        tblHeader += "</tr> </thead>";
+
+                        $(tblHeader).appendTo(table);
+                        $.each(response, function (index, value) {
+                            TableRow = TableRow + "<tr>";
+                            $.each(value, function (key, val) {
+                                TableRow += "<td>" + val + "</td>";
+                            });
+                            TableRow = TableRow + "</tr>";
+                        }
+                        );
+
+                        tblBody = "<tbody>  " + TableRow + "   </tbody> ";
+                        $('#datatable_show').html('');
+                        $('#datatable_show').append(tblHeader + tblBody);
+
+                        $('#datatable_show').slideUp('slow').delay(1500).slideDown('slow');
+                    }
+                   ,
+                    error: function (response) {
+                        alert('DataShowAJAXJson error');
+                    },
+                    failure: function (response) {
+                        alert('DataShowAJAXJson failure');
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+
+    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Select_Report").on('click', function () {
+
+                var _Report = $(this).val().trim();
+                $.ajax({
+                    type: "POST",
+                    url: "RanKDistribution/IsNeedCity",
+                    data: "{ ReportName:'" + _Report + "'}",
+                    method: "post",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        var NeedCity = response['IsTrue'];
+
+                        if (NeedCity == true) {
+
+                            $('#Select_City').removeAttr('disabled');;
+                            $('#Select_School').attr('disabled', 'disabled');
+                            $('#Select_Subject').attr('disabled', 'disabled');
+                            $.post("RanKDistribution/SelectCityData", { SchoolLevel: _Report },
+                     function (response) {
+                         $('#Select_City').html('');
+                         $('#Select_City').html(response);
+                     })
+
+                        }
+                        else {
+                            $('#Select_City').attr('disabled', 'disabled');
+                            $('#Select_School').attr('disabled', 'disabled');
+                            $('#Select_Subject').attr('disabled', 'disabled');
+                        }
+                    },
+                    error: function (r) {
+                        alert(response.responseText);
+                    },
+                    failure: function (r) {
+                        alert(response.responseText);
+                    }
+
+                });
+                return false;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Select_City").on('click', function () {
+
+                var _Report = $('#Select_Report').val().trim();
+                var _CityName = $(this).val().trim();
+
+                $.ajax({
+                    type: "POST",
+                    url: "RanKDistribution/SelectSchoolData",
+                    data: "{ SchoolLevel:'" + _Report + "',CityName:'" + _CityName + "'}",
+                    method: "post",
+                    contentType: "application/json; charset=utf-8",
+                    //dataType: "json",
+                    success: function (response) {
+                        $('#Select_School').html('');
+                        $('#Select_School').html(response);
+                        $('#Select_School').removeAttr('disabled');
+                    }
+                    ,
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+
+                });
+                return false;
+            });
+        });
+    </script>
+
+      <script type="text/javascript">
+          $(function () {
+              $("#DownLoadData").on('click', function () {
+
+               
+                  $.ajax({
+                      type: "GET",
+                      url: "RanKDistribution/DownLoadFile",
+                      //data: "{ SchoolLevel:'" + _Report + "',CityName:'" + _CityName + "'}",
+                      method: "post",
+                      //contentType: "application/json; charset=utf-8",
+                      xhrFields:{
+                          responseType: '"text/css'
+              },
+                      //dataType: "json",
+                      success: function (response) {
+                          alert("success" + response);
+                          alert("success" + response.fileDownlaodName);
+                          var a = document.createElement('a');
+                          var url = window.URL.createObjectURL(response);
+                          alert("a" + a);
+                          alert("url" + url);
+
+                          a.href = url;
+                          a.download = 'myfile.css';
+                         a.click();
+                         window.URL.revokeObjectURL(url);
+                      }
+                      ,
+                      error: function (response) {
+                          alert("error"+response.responseText);
+                      },
+                      failure: function (response) {
+                          alert("failure"+response.responseText);
+                      }
+
+                  });
+                  return false;
+              });
+          });
+    </script>
+    <style class="cp-pen-styles">
+        .table-fixed
+        {
+            /* table-layout:fixed; */
+            height: 90%;
+        }
+
+            .table-fixed thead
+            {
+                width: 100%;
+            }
+
+            .table-fixed tbody
+            {
+                overflow-y: scroll;
+                width: 100%;
+                height: 500px;
+                display: block;
+            }
+
+
+            .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th
+            {
+                display: block;
+            }
+
+                .table-fixed tbody td, .table-fixed thead > tr > th
+                {
+                    float: left;
+                    border-bottom-width: 0;
+                }
+    </style>
+
+}
+

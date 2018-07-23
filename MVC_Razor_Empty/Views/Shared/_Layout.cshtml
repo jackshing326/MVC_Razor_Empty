@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+@*<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">*@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
+
+    <link href="~/Images/math.ico" rel="shortcut icon" type="image/x-icon" />
+    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js")
+    @Scripts.Render("~/Scripts/jquery-1.7.1.js")
+    @RenderSection("Head", required: false)
+
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container-fluid">
+
+                <!-- Logo container-->
+                <div class="logo">
+                    <!-- Text Logo -->
+                    <a class="logo">
+                        <span class="logo-small"><i class="mdi mdi-radar"></i></span>
+                        <span class="logo-large"><i class="mdi mdi-radar"></i>XXXXX系統</span>
+                    </a>
+
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end topbar-main -->
+        <!-- end navbar-custom -->
+    </header>
+
+    <!-- End Navigation Bar-->
+    @RenderBody()
+    @RenderSection("Boostrap", required: false)
+
+</body>
+
+</html>
+
+
+
